@@ -15,10 +15,10 @@ on:
 
 env:
   IMAGE_DESC: "Un Burritos sous Fedora Atomic !"
-  IMAGE_KEYWORDS: "bootc,ublue,universal-blue,sway,buritos,twm"
-  IMAGE_LOGO_URL: "https://github.com/DXC-0/atomic-buritos/blob/main/buritos-atomic.png" 
-  IMAGE_NAME: "${{ github.event.repository.name }}"
-  IMAGE_REGISTRY: "artifacthub.io/${{ github.repository_owner }}"  
+  IMAGE_KEYWORDS: "bootc,ublue,universal-blue,burritos, sway"
+  IMAGE_LOGO_URL: "https://raw.githubusercontent.com/DXC-0/atomic-buritos/refs/heads/main/buritos-atomic.png"  
+  IMAGE_NAME: "${{ github.event.repository.name }}"  # output image name, usually same as repo name
+  IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"  # do not edit
   DEFAULT_TAG: "latest"
 
 concurrency:
@@ -136,21 +136,21 @@ jobs:
 
       # These `if` statements are so that pull requests for your custom images do not make it publish any packages under your name without you knowing
       # They also check if the runner is on the default branch so that things like the merge queue (if you enable it), are going to work
-      - name: Login to ArtifactHub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3
         if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         with:
-          registry: artifacthub.io
-          username: DXC-0
-          password: ${{ secrets.ARTIFACT_HUB }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push To GHCR
         uses: redhat-actions/push-to-registry@5ed88d269cf581ea9ef6dd6806d01562096bee9c # v2
         if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         id: push
         env:
-          REGISTRY_USER: DXC-0
-          REGISTRY_PASSWORD: ${{ secrets.ARTIFACT_HUB }}
+          REGISTRY_USER: ${{ github.actor }}
+          REGISTRY_PASSWORD: ${{ github.token }}
         with:
           registry: ${{ env.IMAGE_REGISTRY }}
           image: ${{ env.IMAGE_NAME }}
