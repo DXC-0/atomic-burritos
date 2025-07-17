@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_DESC: "Un Buritos sous Fedora Atomic !"
+  IMAGE_DESC: "Un Burritos sous Fedora Atomic !"
   IMAGE_KEYWORDS: "bootc,ublue,universal-blue,sway,buritos,twm"
   IMAGE_LOGO_URL: "https://github.com/DXC-0/atomic-buritos/blob/main/buritos-atomic.png" 
   IMAGE_NAME: "${{ github.event.repository.name }}"
