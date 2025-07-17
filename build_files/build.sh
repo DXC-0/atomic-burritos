@@ -8,7 +8,6 @@ dnf5 install -y sddm
 dnf5 install -y sway
 dnf5 install -y flatpak
 dnf5 install -y ghostty
-dnf5 install -y 
 
 # Use a COPR Example:
 #
@@ -20,3 +19,4 @@ dnf5 install -y
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+systemctl enable sddm.service
