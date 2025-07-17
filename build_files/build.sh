@@ -14,10 +14,9 @@ dnf5 install -y flatpak
 
 ### Dev Tooling installation
 
-dnf5 install -y ghostty
 dnf5 install -y tmux
 dnf5 install -y podman
-dnf5 install -y distrobox
+dnf5 install -y distrobox 
 
 #### Example for enabling a System Unit File
 
