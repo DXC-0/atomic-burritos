@@ -16,7 +16,7 @@ on:
 env:
   IMAGE_DESC: "Un Burritos sous Fedora Atomic !"
   IMAGE_KEYWORDS: "bootc,ublue,universal-blue,burritos, sway"
-  IMAGE_LOGO_URL: "https://raw.githubusercontent.com/DXC-0/atomic-buritos/refs/heads/main/buritos-atomic.png"  
+  IMAGE_LOGO_URL: "https://raw.githubusercontent.com/DXC-0/atomic-buritos/refs/heads/main/burritos-atomic.png"  
   IMAGE_NAME: "${{ github.event.repository.name }}"  # output image name, usually same as repo name
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"  # do not edit
   DEFAULT_TAG: "latest"
