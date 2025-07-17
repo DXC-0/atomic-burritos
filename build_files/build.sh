@@ -6,15 +6,16 @@ set -ouex pipefail
 
 dnf5 install -y sddm
 dnf5 install -y sway
+dnf5 install -y waybar
+dnf5 install -y SwayNotificationCenter
 dnf5 install -y flatpak
-dnf5 install -y ghostty
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+### Dev Tooling installation
+
+dnf5 install -y ghostty
+dnf5 install -y tmux
+dnf5 install -y podman
+dnf5 install -y distrobox
 
 #### Example for enabling a System Unit File
 
