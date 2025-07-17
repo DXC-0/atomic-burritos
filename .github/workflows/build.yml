@@ -150,7 +150,7 @@ jobs:
         id: push
         env:
           REGISTRY_USER: DXC-0
-          REGISTRY_PASSWORD: ${{ secret.ARTIFACT_HUB }}
+          REGISTRY_PASSWORD: ${{ secrets.ARTIFACT_HUB }}
         with:
           registry: ${{ env.IMAGE_REGISTRY }}
           image: ${{ env.IMAGE_NAME }}
