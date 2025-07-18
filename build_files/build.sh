@@ -4,7 +4,7 @@ set -ouex pipefail
 
 ### Nvidia Open Installation
 
---from=ghcr.io/ublue-os/akmods-nvidia-open:main-42 /rpms/ /tmp/rpms
+cp --from=ghcr.io/ublue-os/akmods-nvidia-open:main-42 /rpms/ /tmp/rpms
 find /tmp/rpms
 rpm-ostree install /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
 sed -i '0,/enabled=0/{s/enabled=0/enabled=1/}' /etc/yum.repos.d/nvidia-container-toolkit.repo
