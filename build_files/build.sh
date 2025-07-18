@@ -1,11 +1,6 @@
-#!/bin/bashhttps://github.com/DXC-0/atomic-burritos/blob/main/build_files/build.sh
+#!/bin/bash
 
 set -ouex pipefail
-
-### Install
-
-dnf5 -y copr enable ublue-os/packages
-dnf5 -y copr enable ublue-os/staging
 
 ### Install packages
 
