@@ -2,28 +2,6 @@
 
 set -ouex pipefail
 
-### Nvidia Open Installation
-
-cp --from=ghcr.io/ublue-os/akmods-nvidia-open:main-42 /rpms/ /tmp/rpms
-find /tmp/rpms
-rpm-ostree install /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
-sed -i '0,/enabled=0/{s/enabled=0/enabled=1/}' /etc/yum.repos.d/nvidia-container-toolkit.repo
-sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo 
-rpm-ostree install /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings nvidia-container-toolkit
-semodule --verbose --install /usr/share/selinux/packages/nvidia-container.pp
-
-echo '
-
-# Nvidia modesetting support. Set to 0 or comment to disable kernel modesetting
-# support. This must be disabled in case of SLI Mosaic.
-
-options nvidia-drm modeset=1 fbdev=1
-
-' > /usr/lib/modprobe.d/nvidia-modeset.conf
-
-cp /usr/lib/modprobe.d/nvidia-modeset.conf /etc/modprobe.d/nvidia-modeset.conf
-
-
 ### Install
 
 dnf5 -y copr enable ublue-os/packages
