@@ -7,12 +7,6 @@ set -ouex pipefail
 dnf5 -y copr enable ublue-os/packages
 dnf5 -y copr enable ublue-os/staging
 
-
-### Proprietary packages : 
-
-curl -Lo /etc/yum.repos.d/negativo17-fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo
-sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-multimedia.repo
-
 ### Install packages
 
 dnf5 install -y sddm
